@@ -1,14 +1,18 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
 import css from './Form.module.css';
+import { getContacts } from 'redux/selectors';
+import Swal from 'sweetalert2';
 
 const { form, formLabel, submitBtn, formInput } = css;
 
 export const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumder] = useState('');
+
   const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
 
   const newContact = { name, number };
 
@@ -21,6 +25,18 @@ export const Form = () => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
+
+    for (const contact of contacts) {
+      if (contact.name === name) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `'${name}' is already in contacts.`,
+        });
+        reset();
+        return;
+      }
+    }
 
     dispatch(addContact(newContact));
 

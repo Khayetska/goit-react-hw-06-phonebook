@@ -1,4 +1,3 @@
-import Swal from 'sweetalert2';
 const { createSlice } = require('@reduxjs/toolkit');
 const { nanoid } = require('nanoid');
 
@@ -14,16 +13,6 @@ const contactsSlice = createSlice({
   reducers: {
     addContact: {
       reducer(state, { payload }) {
-        for (const contact of state) {
-          if (contact.name === payload.name) {
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: `'${payload.name}' is already in contacts.`,
-            });
-            return;
-          }
-        }
         state.unshift(payload);
       },
       prepare({ name, number }) {
