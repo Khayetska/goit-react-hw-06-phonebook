@@ -33,7 +33,6 @@ export const ContactsItem = ({ contact }) => {
     <li className={contactsItem}>
       <FaPhoneAlt className={contactsIcon} />
       {name}: {number}
-      {/*       <button className={deleteBtn} onClick={() => onDelete(id)}> */}
       <button className={deleteBtn} type="button" onClick={handleDelete}>
         Delete
       </button>
@@ -47,5 +46,4 @@ ContactsItem.propTypes = {
     name: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
   }).isRequired,
-  // onDelete: PropTypes.func.isRequired,
 };

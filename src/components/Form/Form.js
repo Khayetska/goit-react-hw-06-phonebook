@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import PropTypes from 'prop-types';
 import { addContact } from 'redux/contactsSlice';
 import css from './Form.module.css';
 
@@ -67,7 +66,3 @@ export const Form = () => {
     </form>
   );
 };
-
-// Form.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };

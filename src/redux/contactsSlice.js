@@ -2,7 +2,6 @@ import Swal from 'sweetalert2';
 const { createSlice } = require('@reduxjs/toolkit');
 const { nanoid } = require('nanoid');
 
-//contacts: JSON.parse(window.localStorage.getItem('contacts')) ??
 const initialState = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
   { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -14,18 +13,18 @@ const contactsSlice = createSlice({
   initialState,
   reducers: {
     addContact: {
-      reducer(state, action) {
+      reducer(state, { payload }) {
         for (const contact of state) {
-          if (contact.name === action.payload.name) {
+          if (contact.name === payload.name) {
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: `'${action.payload.name}' is already in contacts.`,
+              text: `'${payload.name}' is already in contacts.`,
             });
             return;
           }
         }
-        state.unshift(action.payload);
+        state.unshift(payload);
       },
       prepare({ name, number }) {
         return {

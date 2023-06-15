@@ -1,6 +1,6 @@
-// import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { setFilter } from 'redux/filterSlice';
+import css from './Finder.module.css';
 
 export const Finder = () => {
   const dispatch = useDispatch();
@@ -11,16 +11,9 @@ export const Finder = () => {
   };
 
   return (
-    <input
-      type="text"
-      name="finder"
-      // value={filter}
-      onChange={handleFinderChange}
-    ></input>
+    <>
+      <h3 className={css.finderTitle}>Find contacts by name</h3>
+      <input type="text" name="finder" onChange={handleFinderChange}></input>
+    </>
   );
 };
-
-// Finder.propTypes = {
-//   finder: PropTypes.string.isRequired,
-//   onChange: PropTypes.func.isRequired,
-// };
