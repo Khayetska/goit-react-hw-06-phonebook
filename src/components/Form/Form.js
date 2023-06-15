@@ -1,12 +1,16 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+// import PropTypes from 'prop-types';
+import { addContact } from 'redux/contactsSlice';
 import css from './Form.module.css';
 
-export const Form = ({ onSubmit }) => {
+const { form, formLabel, submitBtn, formInput } = css;
+
+export const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumder] = useState('');
+  const dispatch = useDispatch();
 
-  const { form, formLabel, submitBtn, formInput } = css;
   const newContact = { name, number };
 
   const handleInputChange = evt => {
@@ -19,7 +23,7 @@ export const Form = ({ onSubmit }) => {
   const handleSubmit = evt => {
     evt.preventDefault();
 
-    onSubmit(newContact);
+    dispatch(addContact(newContact));
 
     reset();
   };
@@ -64,6 +68,6 @@ export const Form = ({ onSubmit }) => {
   );
 };
 
-Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+// Form.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+// };
