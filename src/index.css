@@ -63,28 +63,3 @@ input:focus {
   border-color: #302bba;
   outline-color: #302bba;
 }
-
-.conteiner {
-  width: 600px;
-  margin: 0 auto;
-  text-align: center;
-  background-color: #fff;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-.mainTitle {
-  font-size: 70px;
-  color: rgb(56, 7, 130);
-  margin-top: 20px;
-  margin-bottom: 30px;
-  user-select: none;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.titleIcon {
-  width: 60px;
-}

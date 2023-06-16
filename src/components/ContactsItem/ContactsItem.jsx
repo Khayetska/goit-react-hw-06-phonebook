@@ -1,13 +1,13 @@
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FaPhoneAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import css from './ContactsItem.module.css';
-import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contactsSlice';
 
 const { contactsIcon, contactsItem, deleteBtn } = css;
 
-export const ContactsItem = ({ contact }) => {
+const ContactsItem = ({ contact }) => {
   const { id, name, number } = contact;
 
   const dispatch = useDispatch();
@@ -47,3 +47,5 @@ ContactsItem.propTypes = {
     number: PropTypes.string.isRequired,
   }).isRequired,
 };
+
+export default ContactsItem;

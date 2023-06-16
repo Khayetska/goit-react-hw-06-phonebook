@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { setFilter } from 'redux/filterSlice';
 import css from './Finder.module.css';
 
-export const Finder = () => {
+const Finder = () => {
   const dispatch = useDispatch();
 
   const handleFinderChange = evt => {
@@ -17,3 +17,5 @@ export const Finder = () => {
     </>
   );
 };
+
+export default Finder;

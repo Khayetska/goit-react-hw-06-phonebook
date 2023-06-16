@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 
 const { form, formLabel, submitBtn, formInput } = css;
 
-export const Form = () => {
+const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumder] = useState('');
 
@@ -82,3 +82,5 @@ export const Form = () => {
     </form>
   );
 };
+
+export default Form;

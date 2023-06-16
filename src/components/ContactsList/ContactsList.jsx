@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { ContactsItem } from 'components/ContactsItem/ContactsItem';
+import ContactsItem from 'components/ContactsItem/ContactsItem';
 import css from './ContactsList.module.css';
 import { getContacts, getFilter } from 'redux/selectors';
 
-export const ContactsList = () => {
+const ContactsList = () => {
   const contacts = useSelector(getContacts);
   const finder = useSelector(getFilter);
 
@@ -22,11 +22,17 @@ export const ContactsList = () => {
   return (
     <>
       <h2 className={css.contactsTitle}>Contacts</h2>
-      <ul className={css.contactList}>
-        {visibleContacts.map(contact => {
-          return <ContactsItem key={contact.id} contact={contact} />;
-        })}
-      </ul>
+      {contacts?.length > 0 ? (
+        <ul className={css.contactList}>
+          {visibleContacts.map(contact => {
+            return <ContactsItem key={contact.id} contact={contact} />;
+          })}
+        </ul>
+      ) : (
+        <p>You don't have any contact yet</p>
+      )}
     </>
   );
 };
+
+export default ContactsList;
