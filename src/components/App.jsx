@@ -1,8 +1,8 @@
-import Form from './Form/Form';
-import ContactsList from './ContactsList/ContactsList';
-import Finder from './Finder/Finder';
-import MainTitle from './MainTitle/MainTitle';
-import Layout from './Layout/Layout';
+import Form from './Form';
+import ContactsList from './ContactsList';
+import Finder from './Finder';
+import MainTitle from './MainTitle';
+import Layout from './Layout';
 
 export const App = () => {
   return (
