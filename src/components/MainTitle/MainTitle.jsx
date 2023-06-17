@@ -6,9 +6,9 @@ const { mainTitle, titleIcon } = css;
 function MainTitle() {
   return (
     <h1 className={mainTitle}>
-      Ph
+      <span>Ph</span>
       <IoListCircleOutline className={titleIcon} />
-      nebook
+      <span>nebook</span>
     </h1>
   );
 }

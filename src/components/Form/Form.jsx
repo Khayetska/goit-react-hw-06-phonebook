@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
 import css from './Form.module.css';
-import { getContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
 import Swal from 'sweetalert2';
 
 const { form, formLabel, submitBtn, formInput } = css;
@@ -12,7 +12,7 @@ const Form = () => {
   const [number, setNumder] = useState('');
 
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   const newContact = { name, number };
 

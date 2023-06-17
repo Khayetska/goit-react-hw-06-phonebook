@@ -1,35 +1,29 @@
 import { useSelector } from 'react-redux';
+import { TbMoodSad } from 'react-icons/tb';
 import ContactsItem from 'components/ContactsItem';
 import css from './ContactsList.module.css';
-import { getContacts, getFilter } from 'redux/selectors';
+import { selectContacts, selectVisibleContacts } from 'redux/selectors';
+
+const { contactsTitle, contactList, message, messageIcon, messageText } = css;
 
 const ContactsList = () => {
-  const contacts = useSelector(getContacts);
-  const finder = useSelector(getFilter);
-
-  const getVisibleContacts = () => {
-    if (finder.length > 0) {
-      const normalizedFilter = finder.toLowerCase().trim();
-      return contacts.filter(contact =>
-        contact.name.toLowerCase().includes(normalizedFilter)
-      );
-    }
-    return contacts;
-  };
-
-  const visibleContacts = getVisibleContacts();
+  const contacts = useSelector(selectContacts);
+  const visibleContacts = useSelector(selectVisibleContacts);
 
   return (
     <>
-      <h2 className={css.contactsTitle}>Contacts</h2>
+      <h2 className={contactsTitle}>Contacts</h2>
       {contacts?.length > 0 ? (
-        <ul className={css.contactList}>
+        <ul className={contactList}>
           {visibleContacts.map(contact => {
             return <ContactsItem key={contact.id} contact={contact} />;
           })}
         </ul>
       ) : (
-        <p>You don't have any contact yet</p>
+        <div className={message}>
+          <TbMoodSad size={80} className={messageIcon} />
+          <p className={messageText}>You don't have any contact yet</p>
+        </div>
       )}
     </>
   );
