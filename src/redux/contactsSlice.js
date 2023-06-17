@@ -13,7 +13,7 @@ const contactsSlice = createSlice({
   reducers: {
     addContact: {
       reducer(state, { payload }) {
-        state.unshift(payload);
+        return state.toSpliced(0, 0, payload);
       },
       prepare({ name, number }) {
         return {
